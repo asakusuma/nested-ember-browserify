@@ -1,53 +1,24 @@
 # Nested-ember-browserify
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This repo demonstrates an issue where an ember app consumes an ember addon that uses ember-browserify. Outside of adding the [dummy addon](https://github.com/asakusuma/uses-ember-browserify) to package.json, this repo is unchanged from the output of the standard `ember app` generator.
 
-## Prerequisites
+The [dummy addon](https://github.com/asakusuma/uses-ember-browserify) add just one file, [an initializer](https://github.com/asakusuma/uses-ember-browserify/blob/master/app/initializers/ember-browserify-test.js) that pulls in underscore at runtime.
 
-You will need the following things properly installed on your computer.
+If you run `ember build` in the app, you should get the following error:
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
-
-## Installation
-
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
-
-## Running / Development
-
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://www.ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+```
+$ ember build
+version: 0.2.5
+Build failed.
+Path or pattern "browserify/browserify.js" did not match any files
+Error: Path or pattern "browserify/browserify.js" did not match any files
+    at Object.multiGlob (/Users/akusuma/workspace/opensource/nested-ember-browserify/node_modules/ember-cli/node_modules/broccoli-kitchen-sink-helpers/index.js:202:13)
+    at Class.module.exports.CachingWriter.extend.addFiles (/Users/akusuma/workspace/opensource/nested-ember-browserify/node_modules/ember-cli/node_modules/broccoli-sourcemap-concat/concat-with-maps.js:74:13)
+    at Class.module.exports.CachingWriter.extend.updateCache (/Users/akusuma/workspace/opensource/nested-ember-browserify/node_modules/ember-cli/node_modules/broccoli-sourcemap-concat/concat-with-maps.js:52:12)
+    at /Users/akusuma/workspace/opensource/nested-ember-browserify/node_modules/ember-cli/node_modules/broccoli-sourcemap-concat/node_modules/broccoli-caching-writer/index.js:92:34
+    at lib$rsvp$$internal$$tryCatch (/Users/akusuma/workspace/opensource/nested-ember-browserify/node_modules/ember-cli/node_modules/rsvp/dist/rsvp.js:489:16)
+    at lib$rsvp$$internal$$invokeCallback (/Users/akusuma/workspace/opensource/nested-ember-browserify/node_modules/ember-cli/node_modules/rsvp/dist/rsvp.js:501:17)
+    at lib$rsvp$$internal$$publish (/Users/akusuma/workspace/opensource/nested-ember-browserify/node_modules/ember-cli/node_modules/rsvp/dist/rsvp.js:472:11)
+    at lib$rsvp$asap$$flush (/Users/akusuma/workspace/opensource/nested-ember-browserify/node_modules/ember-cli/node_modules/rsvp/dist/rsvp.js:1290:9)
+    at process._tickCallback (node.js:355:11)
+```
