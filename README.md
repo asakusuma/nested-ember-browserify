@@ -22,3 +22,5 @@ Error: Path or pattern "browserify/browserify.js" did not match any files
     at lib$rsvp$asap$$flush (/Users/akusuma/workspace/opensource/nested-ember-browserify/node_modules/ember-cli/node_modules/rsvp/dist/rsvp.js:1290:9)
     at process._tickCallback (node.js:355:11)
 ```
+
+This has something to do with the fact that `postprocessTree` is not called on ember-browserify, which is not a direct depedency of the app.
