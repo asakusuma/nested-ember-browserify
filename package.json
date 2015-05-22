@@ -19,7 +19,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "uses-ember-browserify": "0.0.2"
+    "uses-ember-browserify": "*"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
